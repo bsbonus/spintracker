@@ -24,8 +24,8 @@ ngModule.config(function ($stateProvider) {
         }
       },
       resolve: {
-        features: ['Restangular', function (Restangular) {
-          return Restangular.all('features').getList();
+        djs: ['Restangular', function (Restangular) {
+          return Restangular.all('djs').getList();
         }]
       }
     });

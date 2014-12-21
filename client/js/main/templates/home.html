@@ -2,12 +2,13 @@
   <div class="container">
     <article class="content">
       <header class="page-header">
-        <h2><code>ultimate-seed</code> includes:</h2>
       </header>
       <div class="features">
         <ul>
-          <li ng-repeat="item in items | orderBy:'text'">
-            <a ng-href="{{ item.url }}">{{ item.text }}</a>
+          <li ng-repeat="item in items | orderBy:'name'">
+            <img ng-src="/img/{{item.img}}" class='circle'/>
+            <h2>{{item.name}}</h2>
+            <p>{{item.tag_line}}</p>
           </li>
          </ul>
       </div>
