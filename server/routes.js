@@ -21,6 +21,7 @@ exports.register = function (app, restify) {
   restify.model('/api/features', 'Feature');
   restify.model('/api/users', 'User');
   restify.model('/api/djs', 'Dj');
+  restify.model('/api/genreGraphs', 'GenreGraph');
   restify.any  ('/api/login', c.api.auth.login, ['post']);
   restify.any  ('/api/logout', c.api.auth.logout, ['post']);
   restify.any  ('/api/me', c.api.auth.me, ['list']);

@@ -9,8 +9,14 @@
             <img ng-src="/img/{{item.img}}" class='circle'/>
             <h2>{{item.name}}</h2>
             <p>{{item.tag_line}}</p>
+            <ul ng-repeat="item in genreList">
+              <li ng-repeat="genre in genres" ng-if="genre[item].length > 0">
+                {{item}}:
+                {{ genre[item] }}
+              </li>
+            </ul>
           </li>
-         </ul>
+        </ul>
       </div>
     </article>
   </div>

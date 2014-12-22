@@ -26,6 +26,9 @@ ngModule.config(function ($stateProvider) {
       resolve: {
         djs: ['Restangular', function (Restangular) {
           return Restangular.all('djs').getList();
+        }],
+        genreGraphs: ['Restangular', function (Restangular) {
+          return Restangular.all('genreGraphs').getList();
         }]
       }
     });
