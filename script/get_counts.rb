@@ -93,26 +93,16 @@ graph = {
   ]
 }
 
-def map_tags_to_graph (tags, graph)
-  top_level = []
-  low_level = []
-  tags.each do |tag|
-    graph.keys.each do |top_level_genre|
-      if graph[top_level_genre].include?(tag)
-        top_level.push(top_level_genre)
-        low_level.push(tag)
-      end
-    end
-    if top_level.length == 0 then top_level = ['unknown'] end
-  end
-  return top_level, low_level
-end
+top_level_counts = Hash.new(0)
+low_level_counts = Hash.new(0)
 
-anne_litt_data = ['Anne_Litt_2010_tagged', 'Anne_Litt_2011_tagged', 'Anne_Litt_2012_tagged',
-                  'Anne_Litt_2013_tagged']
+anne_litt_data = ['Anne_Litt_2010_tagged_v2', 'Anne_Litt_2011_tagged_v2', 'Anne_Litt_2012_tagged_v2',
+                  'Anne_Litt_2013_tagged_v2']
 base_path = './script_data/'
 ext = '.json'
+
 anne_litt_data.each do |fname|
+  puts "#{base_path}#{fname}#{ext}"
   f = File.open("#{base_path}#{fname}#{ext}", 'r')
   data = ''
   f.each_line do |line|
@@ -124,18 +114,22 @@ anne_litt_data.each do |fname|
 
   days.each do |day|
     data[day].each do |track|
-      puts track['tags'] 
-      if track['tags'].nil? || track['tags'].length == 0
-        track['tags'] = {'top_level' => ['unknown']}
-      else
-        mapped_tags = map_tags_to_graph(track['tags'], graph)
-        track['tags'] = {'top_level' => mapped_tags[0], 'low_level' => mapped_tags[1]}
+      track['tags']['top_level'].each do |tag|
+        top_level_counts[tag] += 1
+      end
+      if track['tags']['low_level']
+        track['tags']['low_level'].each do |tag|
+          low_level_counts[tag] += 1
+        end
       end
     end
   end
 
-  ext_v2 = '_v2.json'
-  outfile = File.open("#{base_path}#{fname}#{ext_v2}", 'w')
-  outfile.write(data.to_json)
-  outfile.close
+  #ext_v2 = '_counts.json'
+  #outfile = File.open("#{base_path}#{fname}#{ext_v2}", 'w')
+  #outfile.write(data.to_json)
+  #outfile.close
 end
+
+puts top_level_counts
+puts low_level_counts
