@@ -93,7 +93,7 @@ var djList = [
   },
 ];
 
-djList.forEach(function(data){
+/*djList.forEach(function(data){
   var dj = new Dj({
     name: data.name,
     tag_line: data.tag_line,
@@ -108,4 +108,4 @@ djList.forEach(function(data){
 
 Dj.remove(function (err) {
   if (err) { throw err; }
-});
+});*/

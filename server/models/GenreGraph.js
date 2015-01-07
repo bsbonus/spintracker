@@ -43,9 +43,19 @@ exports = module.exports = GenreGraph;
 // Insert data.
 
 var genreSet = new GenreGraph({
-  'folk': ['indie folk', 'indie christmas', 'freak folk', 'alternative country',
-  'folk rock', 'new weird america', 'country rock', 'folk-prog', 'traditional folk',
-  'traditional country', 'british folk'],
+  'folk': [
+    'indie folk', 
+    'indie christmas', 
+    'freak folk', 
+    'alternative country',
+    'folk rock', 
+    'new weird america', 
+    'country rock', 
+    'folk-prog', 
+    'traditional folk',
+    'traditional country', 
+    'british folk'
+  ],
   'pop': [
     'indie pop',
     'chamber pop',
